@@ -5,7 +5,7 @@ Home: https://github.com/zeromq/pyzmq
 
 Package license: BSD 3-clause
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: Python bindings for zeromq
 
