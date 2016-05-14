@@ -69,6 +69,7 @@ Terminology
 
 Current build status
 ====================
+
 Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyzmq-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/pyzmq-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyzmq-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyzmq-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pyzmq-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pyzmq-feedstock/branch/master)
