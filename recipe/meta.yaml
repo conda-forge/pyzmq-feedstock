@@ -10,7 +10,7 @@ source:
   md5: 87e3abb33af5794db5ae85c667bbf324
 
 build:
-  number: 0
+  number: 1
 
 # On Windows ZeroMQ is bundled with pyzmq.
 # On Windows pyzmq includes tweetnacl so libsodium is not used.
