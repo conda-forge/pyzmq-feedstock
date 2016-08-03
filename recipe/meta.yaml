@@ -16,7 +16,7 @@ source:
     - 0001-remove-asyncio-for-Python-2.patch  # [py2k]
 
 build:
-  number: 0
+  number: 1
 
 # On Windows ZeroMQ is bundled with pyzmq.
 # On Windows pyzmq includes tweetnacl so libsodium is not used.
@@ -27,11 +27,11 @@ requirements:
   build:
     - pkg-config  # [not win]
     - python
-    - zeromq      # [not win]
+    - zeromq 4.1*  # [not win]
     - libsodium   # [not win]
   run:
     - python
-    - zeromq      # [not win]
+    - zeromq 4.1*  # [not win]
     - libsodium   # [not win]
 
 test:
