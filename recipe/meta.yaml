@@ -8,12 +8,6 @@ source:
   # We use the pypi URL as it includes the prepared Cython files.
   url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz
   sha256: c4b387071ece45c451c9badf51e02e0a5513fe89abf11dffdf95e81e394d5cf4
-  patches:
-    # Workaround bug in conda-build where compileall prevents installation
-    # due to python3-only asyncio files.
-    # This patch removes those files altogether,
-    # since they aren't importable on py2 anyway.
-    - 0001-remove-asyncio-for-Python-2.patch  # [py2k]
 
 build:
   number: 1
