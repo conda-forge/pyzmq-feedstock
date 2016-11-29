@@ -11,6 +11,18 @@ Summary: Python bindings for zeromq
 
 
 
+Current build status
+====================
+
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyzmq-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pyzmq-feedstock)
+OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyzmq-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyzmq-feedstock)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pyzmq-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pyzmq-feedstock/branch/master)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyzmq/badges/version.svg)](https://anaconda.org/conda-forge/pyzmq)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyzmq/badges/downloads.svg)](https://anaconda.org/conda-forge/pyzmq)
+
 Installing pyzmq
 ================
 
@@ -66,18 +78,6 @@ Terminology
 
 **conda-forge** - the place where the feedstock and smithy live and work to
                   produce the finished article (built conda distributions)
-
-Current build status
-====================
-
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/pyzmq-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/pyzmq-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyzmq-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyzmq-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/pyzmq-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/pyzmq-feedstock/branch/master)
-
-Current release info
-====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyzmq/badges/version.svg)](https://anaconda.org/conda-forge/pyzmq)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyzmq/badges/downloads.svg)](https://anaconda.org/conda-forge/pyzmq)
 
 
 Updating pyzmq-feedstock
