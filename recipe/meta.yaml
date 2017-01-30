@@ -10,7 +10,7 @@ source:
   sha256: 0322543fff5ab6f87d11a8a099c4c07dd8a1719040084b6ce9162bcdf5c45c9d
 
 build:
-  number: 0
+  number: 1
 
 # On Windows ZeroMQ is bundled with pyzmq.
 # On Windows pyzmq includes tweetnacl so libsodium is not used.
@@ -21,12 +21,12 @@ requirements:
   build:
     - pkg-config  # [not win]
     - python
-    - zeromq 4.1*  # [not win]
-    - libsodium   # [not win]
+    - zeromq 4.2*
+    - libsodium   # [not (win and py27)]
   run:
     - python
-    - zeromq 4.1*  # [not win]
-    - libsodium   # [not win]
+    - zeromq 4.2*
+    - libsodium   # [not (win and py27)]
 
 test:
   imports:
@@ -42,7 +42,7 @@ test:
   # The only reason not to run the tests on Windows is that
   # they terminate with an interactive prompt. See also
   # https://github.com/conda-forge/staged-recipes/pull/292#issuecomment-208080893.
-  commands:                # [not win]
+  commands:                       # [not win]
     - py.test --pyargs zmq.tests  # [not win]
 
 about:
