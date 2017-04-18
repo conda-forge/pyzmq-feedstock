@@ -9,8 +9,5 @@ set DISTUTILS_USE_SDK=1
 set ZMQ=%LIBRARY_PREFIX%
 set ZMQ=bundled
 
-"%PYTHON%" setup.py configure --zmq "%ZMQ%"
-if errorlevel 1 exit 1
-
-"%PYTHON%" setup.py install
+"%PYTHON%" -m pip install . "--install-option=--zmq=%ZMQ%"
 if errorlevel 1 exit 1
