@@ -1,4 +1,4 @@
-{% set version = "16.0.2" %}
+{% set version = "17.0.0" %}
 package:
   name: pyzmq
   version: {{ version }}
@@ -7,7 +7,7 @@ source:
   fn: pyzmq-{{ version }}.tar.gz
   # We use the pypi URL as it includes the prepared Cython files.
   url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz
-  sha256: 0322543fff5ab6f87d11a8a099c4c07dd8a1719040084b6ce9162bcdf5c45c9d
+  sha256: 0145ae59139b41f65e047a3a9ed11bbc36e37d5e96c64382fcdff911c4d8c3f0
 
 build:
   number: 3
@@ -23,11 +23,11 @@ requirements:
     - pkg-config  # [not win]
     - python
     - pip
-    - zeromq 4.2.1  # [not win]
+    - zeromq >=4.2.3,<4.3  # [not win]
     - libsodium   # [not win]
   run:
     - python
-    - zeromq 4.2.1  # [not win]
+    - zeromq >=4.2.3,<4.3  # [not win]
     - libsodium   # [not win]
 
 test:
