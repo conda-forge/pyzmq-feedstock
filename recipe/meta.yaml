@@ -10,7 +10,7 @@ source:
   sha256: 0145ae59139b41f65e047a3a9ed11bbc36e37d5e96c64382fcdff911c4d8c3f0
 
 build:
-  number: 3
+  number: 4
 
 # On Windows ZeroMQ is bundled with pyzmq.
 # On Windows pyzmq includes tweetnacl so libsodium is not used.
@@ -23,12 +23,12 @@ requirements:
     - pkg-config  # [not win]
     - python
     - pip
-    - zeromq >=4.2.3,<4.3  # [not win]
-    - libsodium   # [not win]
+    - zeromq >=4.2.5,<4.3
+    - libsodium
   run:
     - python
-    - zeromq >=4.2.3,<4.3  # [not win]
-    - libsodium   # [not win]
+    - zeromq >=4.2.5,<4.3
+    - libsodium
 
 test:
   imports:
