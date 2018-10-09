@@ -3,3 +3,6 @@ zeromq:
 pin_run_as_build:
   zeromq:
     max_pin: x.x
+  libsodium:
+    max_pin: x.x.x
+    min_pin: x.x.x
