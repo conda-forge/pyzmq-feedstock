@@ -1,4 +1,4 @@
-{% set version = "17.1.2" %}
+{% set version = "18.0.0" %}
 
 package:
   name: pyzmq
@@ -7,10 +7,10 @@ package:
 source:
   # We use the pypi URL as it includes the prepared Cython files.
   url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz
-  sha256: a72b82ac1910f2cf61a49139f4974f994984475f771b0faa730839607eeedddf
+  sha256: b30c339eb58355f51f4f54dd61d785f1ff58c86bca1c3a5916977631d121867b
 
 build:
-  number: 1001
+  number: 0
 
 # On Windows ZeroMQ is bundled with pyzmq.
 # On Windows pyzmq includes tweetnacl so libsodium is not used.
