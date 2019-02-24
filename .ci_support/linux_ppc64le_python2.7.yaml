@@ -1,11 +1,13 @@
 c_compiler:
-- vs2015
+- gcc
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2015
+- gxx
+docker_image:
+- condaforge/linux-anvil-ppc64le
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -13,10 +15,6 @@ pin_run_as_build:
   zeromq:
     max_pin: x.x
 python:
-- '3.6'
+- '2.7'
 zeromq:
-- 4.2.5
-zip_keys:
-- - python
-  - c_compiler
-  - cxx_compiler
+- 4.3.1

@@ -1,11 +1,19 @@
+BUILD:
+- aarch64-conda_cos7-linux-gnu
 c_compiler:
-- vs2015
+- gcc
+cdt_arch:
+- aarch64
+cdt_name:
+- cos7
 channel_sources:
-- conda-forge,defaults
+- conda-forge,c4aarch64,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2015
+- gxx
+docker_image:
+- condaforge/linux-anvil-aarch64
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -13,10 +21,6 @@ pin_run_as_build:
   zeromq:
     max_pin: x.x
 python:
-- '3.6'
+- '2.7'
 zeromq:
-- 4.2.5
-zip_keys:
-- - python
-  - c_compiler
-  - cxx_compiler
+- 4.3.1
