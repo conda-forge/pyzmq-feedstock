@@ -10,7 +10,7 @@ source:
   sha256: 8b319805f6f7c907b101c864c3ca6cefc9db8ce0791356f180b1b644c7347e4c
 
 build:
-  number: 0
+  number: 1
 
 # On Windows ZeroMQ is bundled with pyzmq.
 # On Windows pyzmq includes tweetnacl so libsodium is not used.
