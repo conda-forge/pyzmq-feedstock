@@ -1,4 +1,4 @@
-{% set version = "18.1.1" %}
+{% set version = "19.0.0" %}
 
 package:
   name: pyzmq
@@ -7,7 +7,7 @@ package:
 source:
   # We use the pypi URL as it includes the prepared Cython files.
   url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz
-  sha256: 8c69a6cbfa94da29a34f6b16193e7c15f5d3220cb772d6d17425ff3faa063a6d
+  sha256: 5e1f65e576ab07aed83f444e201d86deb01cd27dcf3f37c727bc8729246a60a8
 
 build:
   number: 0
@@ -46,7 +46,7 @@ test:
   # The only reason not to run the tests on Windows is that
   # they terminate with an interactive prompt. See also
   # https://github.com/conda-forge/staged-recipes/pull/292#issuecomment-208080893.
-  commands:                # [not win]
+  commands:   # [not win]
     - py.test --pyargs zmq.tests.test_socket  # [not win]
 
 about:
