@@ -23,6 +23,6 @@ pin_run_as_build:
   zeromq:
     max_pin: x.x
 python:
-- '3.7'
+- 2.7.* *_cpython
 zeromq:
 - 4.3.2
