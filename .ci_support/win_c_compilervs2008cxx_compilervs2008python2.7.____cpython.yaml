@@ -15,9 +15,12 @@ pin_run_as_build:
     max_pin: x.x.x
 python:
 - 2.7.* *_cpython
+python_impl:
+- cpython
 zeromq:
 - 4.3.2
 zip_keys:
-- - python
-  - c_compiler
+- - c_compiler
   - cxx_compiler
+  - python
+  - python_impl
