@@ -52,7 +52,7 @@ test:
   # TestSocket.test_large_send is skipped on upstream CI for pypy
   commands:   # [not win]
     - py.test --pyargs zmq.tests.test_socket  # [not win and python_impl == 'cpython']
-    - py.test  -k 'not zmq.tests.test_socket.TestSocket.test_large_send' --pyargs zmq.tests.test_socket # [not win and python_impl == 'pypy']
+    - py.test  -k 'not TestSocket.test_large_send' --pyargs zmq.tests.test_socket  # [not win and python_impl == 'pypy']
 
 about:
   home: https://github.com/zeromq/pyzmq
