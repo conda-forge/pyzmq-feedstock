@@ -27,16 +27,21 @@ requirements:
     - pip
     - zeromq
     - libsodium
+    - cffi  # [python.endswith('pypy')]
+    - py  # [python.endswith('pypy')]
   run:
     - python
     - zeromq
     - libsodium
+    - cffi  # [python.endswith('pypy')]
+    - py  # [python.endswith('pypy')]
 
 test:
   imports:
     - zmq
-    - zmq.backend.cython.socket
-    - zmq.backend.cython.utils
+    - zmq.backend.cython.socket  # [python.endswith('cpython')]
+    - zmq.backend.cython.utils  # [python.endswith('cpython')]
+    - zmq.backend.cffi  # [python.endswith('pypy')]
     - zmq.devices.monitoredqueue
 
   requires:
