@@ -14,10 +14,13 @@ pin_run_as_build:
     min_pin: x.x.x
     max_pin: x.x.x
 python:
-- '3.8'
+- 3.8.* *_cpython
+python_impl:
+- cpython
 zeromq:
 - 4.3.2
 zip_keys:
-- - python
-  - c_compiler
+- - c_compiler
   - cxx_compiler
+  - python
+  - python_impl

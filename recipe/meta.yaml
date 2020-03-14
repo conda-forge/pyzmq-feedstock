@@ -10,7 +10,7 @@ source:
   sha256: 5e1f65e576ab07aed83f444e201d86deb01cd27dcf3f37c727bc8729246a60a8
 
 build:
-  number: 0
+  number: 1
 
 # On Windows ZeroMQ is bundled with pyzmq.
 # On Windows pyzmq includes tweetnacl so libsodium is not used.
@@ -27,16 +27,19 @@ requirements:
     - pip
     - zeromq
     - libsodium
+    - py  # [python_impl == 'pypy']
   run:
     - python
     - zeromq
     - libsodium
+    - py  # [python_impl == 'pypy']
 
 test:
   imports:
     - zmq
-    - zmq.backend.cython.socket
-    - zmq.backend.cython.utils
+    - zmq.backend.cython.socket  # [python_impl == 'cpython']
+    - zmq.backend.cython.utils   # [python_impl == 'cpython']
+    - zmq.backend.cffi           # [python_impl == 'pypy']
     - zmq.devices.monitoredqueue
 
   requires:
@@ -46,8 +49,10 @@ test:
   # The only reason not to run the tests on Windows is that
   # they terminate with an interactive prompt. See also
   # https://github.com/conda-forge/staged-recipes/pull/292#issuecomment-208080893.
+  # TestSocket.test_large_send is skipped on upstream CI for pypy
   commands:   # [not win]
-    - py.test --pyargs zmq.tests.test_socket  # [not win]
+    - py.test --pyargs zmq.tests.test_socket  # [not win and python_impl == 'cpython']
+    - py.test  -k 'not test_large_send' --pyargs zmq.tests.test_socket  # [not win and python_impl == 'pypy']
 
 about:
   home: https://github.com/zeromq/pyzmq
