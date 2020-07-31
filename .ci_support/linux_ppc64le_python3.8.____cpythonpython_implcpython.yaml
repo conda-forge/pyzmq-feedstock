@@ -22,6 +22,8 @@ python:
 - 3.8.* *_cpython
 python_impl:
 - cpython
+target_platform:
+- linux-ppc64le
 zeromq:
 - 4.3.2
 zip_keys:
