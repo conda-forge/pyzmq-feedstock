@@ -10,7 +10,7 @@ source:
   sha256: 296540a065c8c21b26d63e3cea2d1d57902373b16e4256afe46422691903a438
 
 build:
-  number: 1
+  number: 2
 
 # On Windows pyzmq includes tweetnacl so libsodium is not used.
 # We should revisit these in the future. However, packaging libsodium
@@ -24,7 +24,7 @@ requirements:
   host:
     - python
     - pip
-    - zeromq
+    - zeromq >=4.3.3,<4.4
     - libsodium
     - py  # [python_impl == 'pypy']
   run:
