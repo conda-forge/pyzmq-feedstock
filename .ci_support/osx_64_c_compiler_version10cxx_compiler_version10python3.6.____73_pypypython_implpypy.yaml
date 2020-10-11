@@ -21,13 +21,15 @@ pin_run_as_build:
   zeromq:
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.6.* *_73_pypy
 python_impl:
-- cpython
+- pypy
 target_platform:
 - osx-64
 zeromq:
 - 4.3.2
 zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 - - python
   - python_impl
