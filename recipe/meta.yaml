@@ -10,7 +10,7 @@ source:
   sha256: 296540a065c8c21b26d63e3cea2d1d57902373b16e4256afe46422691903a438
 
 build:
-  number: 2
+  number: 3
 
 # On Windows pyzmq includes tweetnacl so libsodium is not used.
 # We should revisit these in the future. However, packaging libsodium
