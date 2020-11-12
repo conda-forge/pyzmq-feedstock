@@ -18,6 +18,8 @@ build:
 # but don't include one for VS 2008, which we would need for Python 2.7.
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
