@@ -52,8 +52,10 @@ test:
 about:
   home: https://github.com/zeromq/pyzmq
   summary: Python bindings for zeromq
-  license: BSD-3-clause
-  license_file: COPYING.BSD
+  license: BSD-3-Clause AND LGPL-3.0-or-later
+  license_file:
+    - COPYING.BSD
+    - COPYING.LESSER
 
 extra:
   recipe-maintainers:
