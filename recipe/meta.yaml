@@ -1,4 +1,4 @@
-{% set version = "19.0.2" %}
+{% set version = "20.0.0" %}
 
 package:
   name: pyzmq
@@ -7,22 +7,18 @@ package:
 source:
   # We use the pypi URL as it includes the prepared Cython files.
   url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz
-  sha256: 296540a065c8c21b26d63e3cea2d1d57902373b16e4256afe46422691903a438
+  sha256: 824ad5888331aadeac772bce27e1c2fbcab82fade92edbd234542c4e12f0dca9
 
 build:
-  number: 2
+  number: 0
 
-# On Windows pyzmq includes tweetnacl so libsodium is not used.
-# We should revisit these in the future. However, packaging libsodium
-# on Windows is complicated by the fact that they ship project files,
-# but don't include one for VS 2008, which we would need for Python 2.7.
 requirements:
   build:
     - pkg-config  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - python
+    - python >=3.5
     - pip
     - zeromq
     - libsodium
