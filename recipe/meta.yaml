@@ -18,7 +18,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - python >=3.5
+    - python  # should have >=3.5 here, but linter gives spurious errors if we do that
     - pip
     - zeromq
     - libsodium
