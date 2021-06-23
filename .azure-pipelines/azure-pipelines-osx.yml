@@ -20,6 +20,12 @@ jobs:
       osx_64_python3.9.____cpython:
         CONFIG: osx_64_python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
+      osx_arm64_python3.8.____cpython:
+        CONFIG: osx_arm64_python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_python3.9.____cpython:
+        CONFIG: osx_arm64_python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 
   steps:
@@ -33,3 +39,5 @@ jobs:
     displayName: Run OSX build
     env:
       BINSTAR_TOKEN: $(BINSTAR_TOKEN)
+      FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
+      STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)

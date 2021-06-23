@@ -53,12 +53,21 @@ source run_conda_forge_build_setup
 echo -e "\n\nMaking the build clobber file"
 make_build_number ./ ./recipe ./.ci_support/${CONFIG}.yaml
 
+if [[ "${HOST_PLATFORM}" != "${BUILD_PLATFORM}" ]]; then
+    EXTRA_CB_OPTIONS="${EXTRA_CB_OPTIONS:-} --no-test"
+fi
+
 conda $BUILD_CMD ./recipe -m ./.ci_support/${CONFIG}.yaml --suppress-variables --clobber-file ./.ci_support/clobber_${CONFIG}.yaml ${EXTRA_CB_OPTIONS:-}
+( startgroup "Validating outputs" ) 2> /dev/null
+
+validate_recipe_outputs "${FEEDSTOCK_NAME}"
+
+( endgroup "Validating outputs" ) 2> /dev/null
 
 ( startgroup "Uploading packages" ) 2> /dev/null
 
 if [[ "${UPLOAD_PACKAGES}" != "False" ]]; then
-  upload_package  ./ ./recipe ./.ci_support/${CONFIG}.yaml
+  upload_package --validate --feedstock-name="${FEEDSTOCK_NAME}" ./ ./recipe ./.ci_support/${CONFIG}.yaml
 fi
 
 ( endgroup "Uploading packages" ) 2> /dev/null
