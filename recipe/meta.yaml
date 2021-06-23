@@ -52,7 +52,7 @@ test:
 about:
   home: https://github.com/zeromq/pyzmq
   summary: Python bindings for zeromq
-  license: BSD 3-clause
+  license: BSD-3-Clause
   license_file: COPYING.BSD
 
 extra:
