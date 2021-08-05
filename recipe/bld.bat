@@ -1,6 +1,6 @@
 set DISTUTILS_USE_SDK=1
 
-set ZMQ=%LIBRARY_PREFIX%
+set ZMQ_PREFIX=%LIBRARY_PREFIX%
 
-"%PYTHON%" -m pip install . "--install-option=--zmq=%ZMQ%"
+"%PYTHON%" -m pip install .
 if errorlevel 1 exit 1
