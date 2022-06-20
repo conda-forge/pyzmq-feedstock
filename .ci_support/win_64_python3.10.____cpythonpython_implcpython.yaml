@@ -21,6 +21,3 @@ target_platform:
 - win-64
 zeromq:
 - 4.3.4
-zip_keys:
-- - python
-  - python_impl
