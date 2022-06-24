@@ -32,3 +32,8 @@ target_platform:
 - linux-aarch64
 zeromq:
 - 4.3.4
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
+- - python
+  - python_impl
