@@ -1,4 +1,4 @@
-{% set version = "24.0.0" %}
+{% set version = "24.0.1" %}
 
 package:
   name: pyzmq
@@ -7,7 +7,7 @@ package:
 source:
   # We use the pypi URL as it includes the prepared Cython files.
   url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz
-  sha256: 13b008bd142c9f6079ad75a30504eef2291502e9eac90e722b16fcf9ce856147
+  sha256: 216f5d7dbb67166759e59b0479bca82b8acf9bed6015b526b8eb10143fb08e77
 
 build:
   number: 0
