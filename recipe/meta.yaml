@@ -1,4 +1,4 @@
-{% set version = "24.0.1" %}
+{% set version = "25.0.0" %}
 
 package:
   name: pyzmq
@@ -7,10 +7,10 @@ package:
 source:
   # We use the pypi URL as it includes the prepared Cython files.
   url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz
-  sha256: 216f5d7dbb67166759e59b0479bca82b8acf9bed6015b526b8eb10143fb08e77
+  sha256: f330a1a2c7f89fd4b0aa4dcb7bf50243bf1c8da9a2f1efc31daf57a2046b31f2
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -25,12 +25,10 @@ requirements:
     - pip
     - zeromq
     - libsodium
-    - py  # [python_impl == 'pypy']
   run:
     - python
     - zeromq
     - libsodium
-    - py  # [python_impl == 'pypy']
 
 test:
   imports:
@@ -41,6 +39,7 @@ test:
     - zmq.devices.monitoredqueue
 
   requires:
+    - pip
     - pytest
 
   # We run the zmq tests on all platforms except Windows.
@@ -48,7 +47,8 @@ test:
   # they terminate with an interactive prompt. See also
   # https://github.com/conda-forge/staged-recipes/pull/292#issuecomment-208080893.
   # TestSocket.test_large_send is skipped on upstream CI for pypy
-  commands:   # [not win]
+  commands:
+    - pip check
     - py.test --pyargs zmq.tests.test_socket  # [not win and python_impl == 'cpython']
     - py.test  -k 'not test_large_send' --pyargs zmq.tests.test_socket  # [not win and python_impl == 'pypy']
 
