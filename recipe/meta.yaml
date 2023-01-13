@@ -25,12 +25,10 @@ requirements:
     - pip
     - zeromq
     - libsodium
-    - py  # [python_impl == 'pypy']
   run:
     - python
     - zeromq
     - libsodium
-    - py  # [python_impl == 'pypy']
 
 test:
   imports:
@@ -41,6 +39,7 @@ test:
     - zmq.devices.monitoredqueue
 
   requires:
+    - pip
     - pytest
 
   # We run the zmq tests on all platforms except Windows.
@@ -48,7 +47,8 @@ test:
   # they terminate with an interactive prompt. See also
   # https://github.com/conda-forge/staged-recipes/pull/292#issuecomment-208080893.
   # TestSocket.test_large_send is skipped on upstream CI for pypy
-  commands:   # [not win]
+  commands:
+    - pip check
     - py.test --pyargs zmq.tests.test_socket  # [not win and python_impl == 'cpython']
     - py.test  -k 'not test_large_send' --pyargs zmq.tests.test_socket  # [not win and python_impl == 'pypy']
 
