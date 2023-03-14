@@ -1,11 +1,11 @@
-About pyzmq
-===========
+About pyzmq-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pyzmq-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/zeromq/pyzmq
 
 Package license: BSD-3-Clause AND LGPL-3.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pyzmq-feedstock/blob/main/LICENSE.txt)
 
 Summary: Python bindings for zeromq
 
