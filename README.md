@@ -396,6 +396,7 @@ Feedstock Maintainers
 * [@JohanMabille](https://github.com/JohanMabille/)
 * [@SylvainCorlay](https://github.com/SylvainCorlay/)
 * [@jakirkham](https://github.com/jakirkham/)
+* [@jan-janssen](https://github.com/jan-janssen/)
 * [@minrk](https://github.com/minrk/)
 * [@msarahan](https://github.com/msarahan/)
 * [@ocefpaf](https://github.com/ocefpaf/)
