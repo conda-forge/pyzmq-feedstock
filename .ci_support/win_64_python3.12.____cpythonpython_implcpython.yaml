@@ -1,7 +1,7 @@
 c_compiler:
 - vs2019
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -20,8 +20,7 @@ python_impl:
 target_platform:
 - win-64
 zeromq:
-- 4.3.4
+- 4.3.5
 zip_keys:
 - - python
   - python_impl
-  - channel_sources
