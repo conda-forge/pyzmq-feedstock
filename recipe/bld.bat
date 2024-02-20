@@ -1,6 +1,4 @@
-set DISTUTILS_USE_SDK=1
-
-set ZMQ_PREFIX=%LIBRARY_PREFIX%
+set PYZMQ_NO_BUNDLE=1
 
 "%PYTHON%" -m pip install .
 if errorlevel 1 exit 1

@@ -1,11 +1,12 @@
 #!/bin/bash
+set -x
+# make sure it doesn't fallback on bundled libzmq
+export PYZMQ_NO_BUNDLE=1
+export SKBUILD_CMAKE_VERBOSE=true
+echo $PYTHON
+which python
+$PYTHON -m sysconfig || true
+echo '----'
+$BUILD_PREFIX/venv/bin/cross-python -m sysconfig || true
 
-if [ "$(uname)" == "Darwin" ]; then
-    # We disable zmq version checking which fails under certain compile conditions.
-    # The tests after building are assertion enough that we have built correctly.
-    echo "[global]" > setup.cfg
-    echo "skip_check_zmq = True" >> setup.cfg
-fi
-export ZMQ_PREFIX=$PREFIX
-
-"${PYTHON}" -m pip install .
+$PYTHON -m pip install -vv .
