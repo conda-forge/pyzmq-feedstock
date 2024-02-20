@@ -5,6 +5,6 @@ export PYZMQ_NO_BUNDLE=1
 export SKBUILD_CMAKE_VERBOSE=true
 echo $PYTHON
 which python
-python -m sysconfig
+$PYTHON -m sysconfig || true
 
-python -m pip install -vv .
+$PYTHON -m pip install -vv .
