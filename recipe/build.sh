@@ -3,6 +3,8 @@
 # make sure it doesn't fallback on bundled libzmq
 export PYZMQ_NO_BUNDLE=1
 export SKBUILD_CMAKE_VERBOSE=true
-"${PYTHON}" -m sysconfig
+echo $PYTHON
+which python
+python -m sysconfig
 
-"${PYTHON}" -m pip install -vv .
+python -m pip install -vv .
