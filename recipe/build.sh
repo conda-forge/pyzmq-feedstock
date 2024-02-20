@@ -7,6 +7,6 @@ echo $PYTHON
 which python
 $PYTHON -m sysconfig || true
 echo '----'
-$BUILD_PREFIX/venv/bin/python -m sysconfig || true
+$BUILD_PREFIX/venv/bin/cross-python -m sysconfig || true
 
 $PYTHON -m pip install -vv .
