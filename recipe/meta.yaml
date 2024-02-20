@@ -5,11 +5,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz
+  # url: https://pypi.io/packages/source/p/pyzmq/pyzmq-{{ version }}.tar.gz
+  url: https://github.com/minrk/pyzmq/archive/debug-skbuild.tar.gz
   # sha256: 97933d06f77cdf2f27199f48c810dd13a9553f716e4a3b7a65d3e5cf172bdb45
 
 build:
   number: 0
+  skip: true  # [target_platform != 'linux-ppc64le']
 
 requirements:
   build:
