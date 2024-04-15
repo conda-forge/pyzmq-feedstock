@@ -20,12 +20,14 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake >=3.28
-    - cython >=3  # [python_impl == 'cpython']
-    - cffi  # [python_impl == 'pypy']
+    - cython >=3  # [python_impl == 'cpython' and build_platform != target_platform]
+    - cffi  # [python_impl == 'pypy' and build_platform != target_platform]
     - make  # [not win]
   host:
     - python  # should have >=3.5 here, but linter gives spurious errors if we do that
     - pip
+    - cython >=3  # [python_impl == 'cpython']
+    - cffi  # [python_impl == 'pypy']
     - scikit-build-core
     - zeromq
     - libsodium
