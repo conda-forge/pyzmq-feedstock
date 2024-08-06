@@ -38,6 +38,10 @@ requirements:
     - libsodium
 
 test:
+  source_files:
+    - pyproject.toml
+    - pytest.ini
+    - tests
   imports:
     - zmq
     - zmq.backend.cython  # [python_impl == 'cpython']
@@ -58,8 +62,8 @@ test:
     # workaround weird pytest discovery on pypy's top-level __init__.py
     # see conda-forge/pycalphad-feedstock#55
     - pypy -c "import os, pathlib as p, sysconfig as sc; (p.Path(sc.get_paths()['platstdlib'])/ '__init__.py').unlink(missing_ok=True)"  # [python_impl == 'pypy']
-    - py.test --pyargs zmq.tests.test_socket  # [not win and python_impl == 'cpython']
-    - py.test  -k 'not test_large_send' --pyargs zmq.tests.test_socket  # [not win and python_impl == 'pypy']
+    - pytest tests/test_socket.py  # [not win and python_impl == 'cpython']
+    - pytest  -k 'not test_large_send' tests/test_socket.py  # [not win and python_impl == 'pypy']
 
 about:
   home: https://github.com/zeromq/pyzmq
