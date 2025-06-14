@@ -3,7 +3,7 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge/label/cython_dev,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -26,4 +26,3 @@ zeromq:
 zip_keys:
 - - python
   - python_impl
-  - channel_sources
