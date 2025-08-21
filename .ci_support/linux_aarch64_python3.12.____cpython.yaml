@@ -33,5 +33,3 @@ zeromq:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - python
-  - channel_sources
