@@ -20,7 +20,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - cmake >=3.28
+    - cmake 4.0.*
     - cython >=3  # [python_impl == 'cpython' and build_platform != target_platform]
     - cffi  # [python_impl == 'pypy' and build_platform != target_platform]
     - make  # [not win]
