@@ -18,7 +18,7 @@ build:
       - $PYTHON -m pip install -v .
     interpreter: bash
     env:
-      CMAKE_GENERATOR: ninja
+      CMAKE_GENERATOR: Ninja
       # make sure it doesn't fallback on bundled libzmq
       PYZMQ_NO_BUNDLE: "1"
       SKBUILD_CMAKE_VERBOSE: "true"
