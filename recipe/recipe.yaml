@@ -81,10 +81,10 @@ tests:
       - if: python_impl == 'pypy'
         then: 
           - pypy -c "import os, pathlib as p, sysconfig as sc; (p.Path(sc.get_paths()['platstdlib'])/ '__init__.py').unlink(missing_ok=True)"
-      - if: not win and python_impl == 'cpython'
+      - if: python_impl == 'cpython'
         then:
           - pytest tests/test_socket.py
-      - if: not win and python_impl == 'pypy'
+      - if: python_impl == 'pypy'
         then: 
           - pytest  -k 'not test_large_send' tests/test_socket.py
 
