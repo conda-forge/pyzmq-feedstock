@@ -1,0 +1,99 @@
+schema_version: 1
+
+context:
+  version: 27.0.2
+
+package:
+  name: pyzmq
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/p/pyzmq/pyzmq-${{ version }}.tar.gz
+  sha256: b398dd713b18de89730447347e96a0240225e154db56e35b6bb8447ffdb07798
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then: 
+        - python
+        - cross-python_${{ target_platform }}
+        - if: python_impl == 'cpython'
+          then:
+            - cython >=3.1
+          else:
+            - cffi
+          
+    - if: not win
+      then: 
+        - pkg-config
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    # cmake 4.1 breaks cross-compilation
+    - cmake 4.0.*
+    - ninja
+  host:
+    - python
+    - pip
+    - if: python_impl == 'cpython'
+      then:
+        - cython >=3.1
+      else:
+        - cffi
+    - scikit-build-core
+    - zeromq
+    - libsodium
+  run:
+    - python
+
+tests:
+  - python:
+      imports:
+        - zmq
+        - if: python_impl == 'cpython'
+          then:
+            - zmq.backend.cython
+          else:
+            - zmq.backend.cffi
+
+  - files:
+      source:
+        - pyproject.toml
+        - pytest.ini
+        - tests
+    requirements:
+      run:
+        - pip
+        - pytest
+    script:
+      - pip check
+      - if: python_impl == 'pypy'
+        then: 
+          - pypy -c "import os, pathlib as p, sysconfig as sc; (p.Path(sc.get_paths()['platstdlib'])/ '__init__.py').unlink(missing_ok=True)"
+      - if: not win and python_impl == 'cpython'
+        then:
+          - pytest tests/test_socket.py
+      - if: not win and python_impl == 'pypy'
+        then: 
+          - pytest  -k 'not test_large_send' tests/test_socket.py
+
+about:
+  summary: Python bindings for zeromq
+  license: BSD-3-Clause
+  license_file:
+    - LICENSE.md
+  homepage: https://github.com/zeromq/pyzmq
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
+    - jakirkham
+    - minrk
+    - msarahan
+    - pelson
+    - SylvainCorlay
+    - JohanMabille
+    - ocefpaf
