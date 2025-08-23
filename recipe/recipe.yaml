@@ -51,6 +51,7 @@ requirements:
 
 tests:
   - python:
+      pip_check: true
       imports:
         - zmq
         - if: python_impl == 'cpython'
@@ -66,10 +67,8 @@ tests:
         - tests
     requirements:
       run:
-        - pip
         - pytest
     script:
-      - pip check
       - if: python_impl == 'pypy'
         then: 
           - pypy -c "import os, pathlib as p, sysconfig as sc; (p.Path(sc.get_paths()['platstdlib'])/ '__init__.py').unlink(missing_ok=True)"
