@@ -1,0 +1,94 @@
+schema_version: 1
+
+context:
+  version: 27.0.2
+
+package:
+  name: pyzmq
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/p/pyzmq/pyzmq-${{ version }}.tar.gz
+  sha256: b398dd713b18de89730447347e96a0240225e154db56e35b6bb8447ffdb07798
+
+build:
+  number: 1
+  script:
+    content:
+      - ${{ PYTHON }} -m pip install -v .
+    env:
+      # make sure it doesn't fallback on bundled libzmq
+      PYZMQ_NO_BUNDLE: "1"
+      SKBUILD_CMAKE_VERBOSE: "true"
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then: 
+        - python
+        - cross-python_${{ target_platform }}
+        - if: python_impl == 'cpython'
+          then:
+            - cython >=3.1
+          else:
+            - cffi
+          
+    - if: not win
+      then: 
+        - pkg-config
+        - make
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    # cmake 4.1 breaks cross-compilation
+    - cmake 4.0.*
+  host:
+    - python
+    - pip
+    - if: python_impl == 'cpython'
+      then:
+        - cython >=3.1
+      else:
+        - cffi
+    - scikit-build-core
+    - zeromq
+  run:
+    - python
+
+tests:
+  - python:
+      pip_check: true
+      imports:
+        - zmq
+        - if: python_impl == 'cpython'
+          then:
+            - zmq.backend.cython
+          else:
+            - zmq.backend.cffi
+
+  - files:
+      recipe:
+        - tests/
+    requirements:
+      run:
+        - pytest
+    script:
+      - pytest -v tests/
+
+about:
+  summary: Python bindings for zeromq
+  license: BSD-3-Clause
+  license_file:
+    - LICENSE.md
+  homepage: https://github.com/zeromq/pyzmq
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
+    - jakirkham
+    - minrk
+    - msarahan
+    - pelson
+    - SylvainCorlay
+    - JohanMabille
+    - ocefpaf
