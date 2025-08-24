@@ -1,0 +1,3 @@
+channel_sources:
+  # temporary, so we can test Python 3.14
+  - conda-forge,conda-forge/label/python_rc
