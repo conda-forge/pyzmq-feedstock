@@ -15,8 +15,7 @@ build:
   number: 1
   script:
     content:
-      - $PYTHON -m pip install -v .
-    interpreter: bash
+      - ${{ PYTHON }} -m pip install -v .
     env:
       CMAKE_GENERATOR: Ninja
       # make sure it doesn't fallback on bundled libzmq
