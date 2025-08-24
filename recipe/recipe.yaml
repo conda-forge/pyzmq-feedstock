@@ -96,7 +96,7 @@ tests:
           # specify Python version because rattler.build doesn't set $SP_DIR
           # (or any standard variables it should)
           # in the test env
-          - abi3audit $PREFIX/lib/python3.12/site-packages/zmq/backend/cython/_zmq*.${{ "pyd" if win else "so" }} -s -v --assume-minimum-abi3 ${{ abi3_python }}
+          - abi3audit $PREFIX/lib/python3.12/site-packages/zmq/backend/cython/_zmq.${{ "pyd" if win else "abi3.so" }} -s -v --assume-minimum-abi3 ${{ abi3_python }}
         requirements:
           run:
             - python 3.12.*
