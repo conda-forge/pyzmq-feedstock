@@ -17,7 +17,6 @@ build:
     content:
       - ${{ PYTHON }} -m pip install -v .
     env:
-      CMAKE_GENERATOR: Ninja
       # make sure it doesn't fallback on bundled libzmq
       PYZMQ_NO_BUNDLE: "1"
       SKBUILD_CMAKE_VERBOSE: "true"
@@ -37,12 +36,12 @@ requirements:
     - if: not win
       then: 
         - pkg-config
+        - make
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}
     # cmake 4.1 breaks cross-compilation
     - cmake 4.0.*
-    - ninja
   host:
     - python
     - pip
