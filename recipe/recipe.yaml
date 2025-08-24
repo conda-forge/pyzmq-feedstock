@@ -52,7 +52,6 @@ requirements:
         - cffi
     - scikit-build-core
     - zeromq
-    - libsodium
   run:
     - python
 
@@ -68,23 +67,13 @@ tests:
             - zmq.backend.cffi
 
   - files:
-      source:
-        - pyproject.toml
-        - pytest.ini
-        - tests
+      recipe:
+        - tests/
     requirements:
       run:
         - pytest
     script:
-      - if: python_impl == 'pypy'
-        then: 
-          - pypy -c "import os, pathlib as p, sysconfig as sc; (p.Path(sc.get_paths()['platstdlib'])/ '__init__.py').unlink(missing_ok=True)"
-      - if: python_impl == 'cpython'
-        then:
-          - pytest tests/test_socket.py
-      - if: python_impl == 'pypy'
-        then: 
-          - pytest  -k 'not test_large_send' tests/test_socket.py
+      - pytest -v tests/
 
 about:
   summary: Python bindings for zeromq
