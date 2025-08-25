@@ -2,6 +2,13 @@ schema_version: 1
 
 context:
   version: 27.0.2
+  # build abi3 on Python 3.12
+  # skip abi3-compatible Pythons later than that
+  abi3_python: "3.12"
+  skip_abi3_python: ">=3.13"
+  build_abi3: ${{ match(python, abi3_python + ".*") and is_abi3 }}
+  skip_build: ${{ match(python, skip_abi3_python) and is_abi3 }}
+  abi3_tag: ${{ "cp312" if build_abi3 else "" }}
 
 package:
   name: pyzmq
@@ -12,14 +19,18 @@ source:
   sha256: b398dd713b18de89730447347e96a0240225e154db56e35b6bb8447ffdb07798
 
 build:
-  number: 1
+  number: 2
   script:
     content:
       - ${{ PYTHON }} -m pip install -v .
     env:
       # make sure it doesn't fallback on bundled libzmq
       PYZMQ_NO_BUNDLE: "1"
-      SKBUILD_CMAKE_VERBOSE: "true"
+      SKBUILD_BUILD_VERBOSE: "true"
+      SKBUILD_WHEEL_PY_API: ${{ abi3_tag }}
+  skip: skip_build
+  python:
+    version_independent: ${{ build_abi3 }}
 
 requirements:
   build:
@@ -52,6 +63,9 @@ requirements:
         - cffi
     - scikit-build-core
     - zeromq
+    - if: build_abi3
+      then:
+        - python-abi3
   run:
     - python
 
@@ -74,6 +88,41 @@ tests:
         - pytest
     script:
       - pytest -v tests/
+  
+  # additional tests for abi3 builds
+  - if: build_abi3 and not win
+    then:
+      - script:
+          # specify Python version because rattler.build doesn't set $SP_DIR
+          # (or any standard variables it should)
+          # in the test env
+          - abi3audit  $PREFIX/lib/python3.12/site-packages/zmq/backend/cython/_zmq*.so -s -v --assume-minimum-abi3 ${{ abi3_python }}
+        requirements:
+          run:
+            - python 3.12.*
+            - abi3audit
+
+      # run tests for more than one abi3 Python
+      # to make sure it really works
+      - files:
+          recipe:
+            - tests/
+        requirements:
+          run:
+            - pytest
+            - python 3.13.*
+        script:
+          - pytest -v tests/
+      - files:
+          recipe:
+            - tests/
+        requirements:
+          run:
+            - pytest
+            - python 3.14.*
+        script:
+          - pytest -v tests/
+
 
 about:
   summary: Python bindings for zeromq
