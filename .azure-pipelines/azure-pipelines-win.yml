@@ -8,17 +8,17 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_is_abi3falsepython3.13.____cp313t:
-        CONFIG: win_64_is_abi3falsepython3.13.____cp313t
+      win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.10.____cpython:
+        CONFIG: win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      win_64_is_abi3truepython3.10.____cpython:
-        CONFIG: win_64_is_abi3truepython3.10.____cpython
+      win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.11.____cpython:
+        CONFIG: win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      win_64_is_abi3truepython3.11.____cpython:
-        CONFIG: win_64_is_abi3truepython3.11.____cpython
+      win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.12.____cpython:
+        CONFIG: win_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-      win_64_is_abi3truepython3.12.____cpython:
-        CONFIG: win_64_is_abi3truepython3.12.____cpython
+      win_64_channel_sourcesconda-forgeis_abi3falsepython3.13.____cp313t:
+        CONFIG: win_64_channel_sourcesconda-forgeis_abi3falsepython3.13.____cp313t
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:

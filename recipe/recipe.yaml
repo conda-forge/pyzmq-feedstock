@@ -19,7 +19,7 @@ source:
   sha256: b398dd713b18de89730447347e96a0240225e154db56e35b6bb8447ffdb07798
 
 build:
-  number: 2
+  number: 3
   script:
     content:
       - ${{ PYTHON }} -m pip install -v .
@@ -35,7 +35,7 @@ build:
 requirements:
   build:
     - if: build_platform != target_platform
-      then: 
+      then:
         - python
         - cross-python_${{ target_platform }}
         - if: python_impl == 'cpython'
@@ -43,9 +43,9 @@ requirements:
             - cython >=3.1
           else:
             - cffi
-          
+
     - if: not win
-      then: 
+      then:
         - pkg-config
         - make
     - ${{ compiler('c') }}
@@ -88,7 +88,7 @@ tests:
         - pytest
     script:
       - pytest -v tests/
-  
+
   # additional tests for abi3 builds
   - if: build_abi3 and not win
     then:
