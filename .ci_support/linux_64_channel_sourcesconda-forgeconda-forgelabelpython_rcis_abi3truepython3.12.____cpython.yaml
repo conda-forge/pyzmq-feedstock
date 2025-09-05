@@ -29,11 +29,12 @@ python:
 python_impl:
 - cpython
 target_platform:
-- linux-ppc64le
+- linux-64
 zeromq:
 - 4.3.5
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 - - python
+  - channel_sources
   - is_abi3
