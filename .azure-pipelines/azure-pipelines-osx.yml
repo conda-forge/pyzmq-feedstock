@@ -5,33 +5,41 @@
 jobs:
 - job: osx
   pool:
-    vmImage: macOS-15
+    vmImage: $(VMIMAGE)
   strategy:
     matrix:
-      osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.10.____cpython:
-        CONFIG: osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.10.____cpython
+      osx_64_is_abi3falsepython3.13.____cp313t:
+        CONFIG: osx_64_is_abi3falsepython3.13.____cp313t
         UPLOAD_PACKAGES: 'True'
-      osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.11.____cpython:
-        CONFIG: osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.11.____cpython
+        VMIMAGE: macOS-15
+      osx_64_is_abi3truepython3.10.____cpython:
+        CONFIG: osx_64_is_abi3truepython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.12.____cpython:
-        CONFIG: osx_64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.12.____cpython
+        VMIMAGE: macOS-15
+      osx_64_is_abi3truepython3.11.____cpython:
+        CONFIG: osx_64_is_abi3truepython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_channel_sourcesconda-forgeis_abi3falsepython3.13.____cp313t:
-        CONFIG: osx_64_channel_sourcesconda-forgeis_abi3falsepython3.13.____cp313t
+        VMIMAGE: macOS-15
+      osx_64_is_abi3truepython3.12.____cpython:
+        CONFIG: osx_64_is_abi3truepython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.10.____cpython:
-        CONFIG: osx_arm64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.10.____cpython
+        VMIMAGE: macOS-15
+      osx_arm64_is_abi3falsepython3.13.____cp313t:
+        CONFIG: osx_arm64_is_abi3falsepython3.13.____cp313t
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.11.____cpython:
-        CONFIG: osx_arm64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.11.____cpython
+        VMIMAGE: macOS-15
+      osx_arm64_is_abi3truepython3.10.____cpython:
+        CONFIG: osx_arm64_is_abi3truepython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.12.____cpython:
-        CONFIG: osx_arm64_channel_sourcesconda-forgeconda-forgelabelpython_rcis_abi3truepython3.12.____cpython
+        VMIMAGE: macOS-15
+      osx_arm64_is_abi3truepython3.11.____cpython:
+        CONFIG: osx_arm64_is_abi3truepython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_channel_sourcesconda-forgeis_abi3falsepython3.13.____cp313t:
-        CONFIG: osx_arm64_channel_sourcesconda-forgeis_abi3falsepython3.13.____cp313t
+        VMIMAGE: macOS-15
+      osx_arm64_is_abi3truepython3.12.____cpython:
+        CONFIG: osx_arm64_is_abi3truepython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
+        VMIMAGE: macOS-15
   timeoutInMinutes: 360
   variables: {}
 

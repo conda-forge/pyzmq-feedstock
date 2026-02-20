@@ -19,7 +19,7 @@ source:
   sha256: ac0765e3d44455adb6ddbf4417dcce460fc40a05978c08efdf2948072f6db540
 
 build:
-  number: 0
+  number: 1
   script:
     content:
       - ${{ PYTHON }} -m pip install -v .
@@ -38,11 +38,7 @@ requirements:
       then:
         - python
         - cross-python_${{ target_platform }}
-        - if: python_impl == 'cpython'
-          then:
-            - cython >=3.1
-          else:
-            - cffi
+        - cython >=3.1
 
     - if: not win
       then:
@@ -56,11 +52,7 @@ requirements:
   host:
     - python
     - pip
-    - if: python_impl == 'cpython'
-      then:
-        - cython >=3.1
-      else:
-        - cffi
+    - cython >=3.1
     - scikit-build-core
     - zeromq
     - if: build_abi3
@@ -74,11 +66,7 @@ tests:
       pip_check: true
       imports:
         - zmq
-        - if: python_impl == 'cpython'
-          then:
-            - zmq.backend.cython
-          else:
-            - zmq.backend.cffi
+        - zmq.backend.cython
 
   - files:
       recipe:
