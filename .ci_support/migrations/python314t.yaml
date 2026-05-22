@@ -38,6 +38,9 @@ __migrator:
             # optional test dependencies
             - numba
             - sparse
+        pyzmq:
+            # test dependency not used with free-threaded
+            - auditwheel
     allowlist_file: free-threaded-314.txt
 
 python:
