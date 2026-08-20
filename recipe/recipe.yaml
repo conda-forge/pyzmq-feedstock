@@ -67,6 +67,11 @@ tests:
       imports:
         - zmq
         - zmq.backend.cython
+      python_version:
+        - "*"
+        - if: build_abi3
+          then:
+            - "3.12"
 
   - files:
       recipe:
