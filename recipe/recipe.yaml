@@ -2,13 +2,14 @@ schema_version: 1
 
 context:
   version: "27.2.0"
-  # build abi3 on Python 3.12
+  # Windows ARM64 Python starts at 3.14 on conda-forge.
+  # Keep the existing ABI3 baseline on other platforms.
   # skip abi3-compatible Pythons later than that
-  abi3_python: "3.12"
-  skip_abi3_python: ">=3.13"
+  abi3_python: '${{ "3.14" if target_platform == "win-arm64" else "3.12" }}'
+  skip_abi3_python: '${{ ">=3.15" if target_platform == "win-arm64" else ">=3.13" }}'
   build_abi3: ${{ match(python, abi3_python + ".*") and is_abi3 }}
   skip_build: ${{ match(python, skip_abi3_python) and is_abi3 }}
-  abi3_tag: ${{ "cp312" if build_abi3 else "" }}
+  abi3_tag: ${{ "cp" + (abi3_python | replace(".", "")) if build_abi3 else "" }}
 
 package:
   name: pyzmq
@@ -47,8 +48,11 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
     - ${{ compiler('cxx') }}
-    # cmake 4.1 breaks cross-compilation
-    - cmake 4.0.*
+    # CMake 4.0 is unavailable on win-arm64. Native builds can use newer
+    # versions; retain the existing pin elsewhere (4.1 breaks cross-compilation).
+    - if: target_platform == "win-arm64" and build_platform == target_platform
+      then: cmake >=4.0
+      else: cmake 4.0.*
   host:
     - python
     - pip
@@ -71,7 +75,7 @@ tests:
         - "*"
         - if: build_abi3
           then:
-            - "3.12"
+            - ${{ abi3_python }}
 
   - files:
       recipe:
