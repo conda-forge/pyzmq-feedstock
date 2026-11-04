@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "27.2.0"
+  version: "27.3.0"
   # build abi3 on Python 3.12
   # skip abi3-compatible Pythons later than that
   abi3_python: "3.12"
@@ -16,10 +16,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/p/pyzmq/pyzmq-${{ version }}.tar.gz
-  sha256: 54d4259d1bfae24ecdb5ca79f7acc2eac6c286a02d6a0ae617797cb45f0726d3
+  sha256: bbedb3d1d99babc625f1dd9d7438acefd442b36b75073fd6bc1ef7c0a4b96d56
 
 build:
-  number: 2
+  number: 0
   script:
     content:
       - ${{ PYTHON }} -m pip install -v .
