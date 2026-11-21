@@ -42,7 +42,7 @@ requirements:
 
     - if: not win
       then:
-        - pkg-config
+        - pkgconf
         - make
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
